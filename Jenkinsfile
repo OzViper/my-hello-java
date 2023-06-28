@@ -16,7 +16,7 @@ pipeline {
         BRIDGECLI_LINUX64 = 'https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-bridge/latest/synopsys-bridge-linux64.zip'
     }
     tools {
-        maven 'maven-3.9'
+        maven 'maven'
         jdk 'openjdk-17'
     }
     stages {
