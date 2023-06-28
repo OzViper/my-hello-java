@@ -107,7 +107,6 @@ pipeline {
                     }
                 }
                 stage('Coverity on Polaris PR Scan') {
-                    when { environment name: 'PRSCAN', value: 'true' }
                     steps {
                         withCredentials([string(credentialsId: 'sipse.polaris.synopsys.com', variable: 'POLARIS_ACCESS_TOKEN')]) {
                             script {
