@@ -42,7 +42,7 @@ pipeline {
                         DETECT_EXCLUDED_DETECTOR_TYPES = 'GIT'
                     }
                     steps {
-                        withCredentials([string(credentialsId: 'testing.blackduck.synopsys.com', variable: 'BRIDGE_BLACKDUCK_TOKEN')]) {
+                        withCredentials([string(credentialsId: 'BLACKDUCK_URL', variable: 'BRIDGE_BLACKDUCK_TOKEN')]) {
                             script {
                                 status = sh returnStatus: true, script: """
                                     curl -fLsS -o bridge.zip $BRIDGECLI_LINUX64 && unzip -qo -d $WORKSPACE_TMP bridge.zip && rm -f bridge.zip
@@ -68,7 +68,7 @@ pipeline {
                         BRIDGE_ENVIRONMENT_SCAN_PULL = 'true'
                     }
                     steps {
-                        withCredentials([string(credentialsId: 'testing.blackduck.synopsys.com', variable: 'BRIDGE_BLACKDUCK_TOKEN'),
+                        withCredentials([string(credentialsId: 'BLACKDUCK_URL', variable: 'BRIDGE_BLACKDUCK_TOKEN'),
                                          string(credentialsId: 'github-pat', variable: 'GITHUB_TOKEN')]) {
                             script {
                                 status = sh returnStatus: true, script: """
@@ -92,7 +92,7 @@ pipeline {
                 stage('Coverity on Polaris Full Scan') {
                     when { environment name: 'FULLSCAN', value: 'true' }
                     steps {
-                        withCredentials([string(credentialsId: 'sipse.polaris.synopsys.com', variable: 'POLARIS_ACCESS_TOKEN')]) {
+                        withCredentials([string(credentialsId: 'POLARIS_URL', variable: 'POLARIS_ACCESS_TOKEN')]) {
                             script {
                                 status = sh returnStatus: true, script: """
                                     curl -fLOsS $POLARIS_SERVER_URL/api/tools/polaris_cli-linux64.zip
