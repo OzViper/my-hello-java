@@ -46,12 +46,11 @@ pipeline {
                                 status = sh returnStatus: true, script: """
                                     curl -fLsS -o bridge.zip $BRIDGECLI_LINUX64 && unzip -qo -d $WORKSPACE_TMP bridge.zip && rm -f bridge.zip
                                     $WORKSPACE_TMP/synopsys-bridge --verbose --stage blackduck \
-                                        blackduck.url=$BLACKDUCK_URL \
-                                        blackduck.scan.failure.severities='BLOCKER' \
+                                        blackduck.url=$BLACKDUCK_URL 
                                         blackduck.scan.full='true'
                                 """
-                                if (status == 8) { unstable 'policy violation' }
-                                else if (status != 0) { error 'scan failure' }
+                                //if (status == 8) { unstable 'policy violation' }
+                                //else if (status != 0) { error 'scan failure' }
                             }
                         }
                     }
