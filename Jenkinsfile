@@ -33,7 +33,6 @@ pipeline {
         stage('Scan') {
             parallel {
                 stage('Black Duck Full Scan') {
-                    when { environment name: 'FULLSCAN', value: 'true' }
                     environment {
                         DETECT_PROJECT_NAME = "$PROJECT"
                         DETECT_PROJECT_VERSION_NAME = "$BRANCH_NAME"
