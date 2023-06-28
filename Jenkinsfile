@@ -41,7 +41,7 @@ pipeline {
                         DETECT_EXCLUDED_DETECTOR_TYPES = 'GIT'
                     }
                     steps {
-                        withCredentials([string(credentialsId: 'BLACKDUCK_URL', variable: 'BRIDGE_BLACKDUCK_TOKEN')]) {
+                        withCredentials([string(credentialsId: 'BLACKDUCK_URL', variable: 'MWFmY2U4NDQtMzZmMi00MDdiLWI5ZGUtNzAxNzMxMTU1MWZmOmE4NjRiZmQxLTgxNmMtNDgxYS05MmNhLWU4ZTBjMmViNTI0ZA==')]) {
                             script {
                                 status = sh returnStatus: true, script: """
                                     curl -fLsS -o bridge.zip $BRIDGECLI_LINUX64 && unzip -qo -d $WORKSPACE_TMP bridge.zip && rm -f bridge.zip
