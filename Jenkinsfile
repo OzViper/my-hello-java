@@ -89,7 +89,6 @@ pipeline {
                     }
                 }
                 stage('Coverity on Polaris Full Scan') {
-                    when { environment name: 'FULLSCAN', value: 'true' }
                     steps {
                         withCredentials([string(credentialsId: 'POLARIS_URL', variable: '3hp50qms7h4bl1crmn41agv1ioev7hb5e3n8mbg4kv4000t086v0')]) {
                             script {
@@ -107,6 +106,7 @@ pipeline {
                     }
                 }
                 stage('Coverity on Polaris PR Scan') {
+                    when { environment name: 'FULLSCAN', value: 'true' }
                     steps {
                         withCredentials([string(credentialsId: 'POLARIS_URL', variable: '3hp50qms7h4bl1crmn41agv1ioev7hb5e3n8mbg4kv4000t086v0')]) {
                             script {
