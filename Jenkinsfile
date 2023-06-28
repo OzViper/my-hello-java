@@ -91,7 +91,7 @@ pipeline {
                 stage('Coverity on Polaris Full Scan') {
                     when { environment name: 'FULLSCAN', value: 'true' }
                     steps {
-                        withCredentials([string(credentialsId: 'POLARIS_URL', variable: 'POLARIS_ACCESS_TOKEN')]) {
+                        withCredentials([string(credentialsId: 'POLARIS_URL', variable: '3hp50qms7h4bl1crmn41agv1ioev7hb5e3n8mbg4kv4000t086v0')]) {
                             script {
                                 status = sh returnStatus: true, script: """
                                     curl -fLOsS $POLARIS_SERVER_URL/api/tools/polaris_cli-linux64.zip
